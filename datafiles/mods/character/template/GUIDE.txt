@@ -1,0 +1,34 @@
+GENERAL INFO
+
+sprites do not scale ingame. they should stay proportional to mario 1 mario's size if they need to be any bigger for some reason
+your hitbox will always stay the same no matter the sprite size
+to export spritesheets properly, just go to file > export > as spritesheet in aseprite
+
+
+every character by default needs the following sprites
+Idle (Big & Small)
+Walk (Big & Small)
+Jump (Big & Small)
+Pivot/Skid (Big & Small)
+Die (Small)
+Swim (Big & Small)
+Climb (Big & Small)
+Fireball Throw (Big)
+Shrink (Big to small)
+Grow (Small to big)
+Crouch (Big)
+Dance (Optional, Big Or Small)
+Palette Sheet
+
+your palette sheet should have every color in the base sprite in a row at the top, this is the "base palette"
+copy this row and move it down 1 pixel, this is the "default palette"
+copy this row and move it down 1 pixel, then edit the colors for the fire flower palette
+from this point onward, any extra rows are custom palettes you can equip in the options menu.
+the palette sprite must be 8 pixels in width. i dont know why. it just crashes if you dont.
+
+it is recommended that grow and shrink stay at 14 and 17 frames in length respectively for timing ingame
+
+MAIN.TXT INFO
+
+the id variable is the name your sprites will be added under internally. make sure this does not conflict with any other mods you have on. it cannot have any spaces in it
+type out a sprite name in the correct area, put an equals after it and then a number to specify frame count

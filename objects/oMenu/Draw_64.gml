@@ -32,23 +32,51 @@ else
 
 if section = 3
 {
-	var p = sMario_s_idle
-	if sprite_exists(ms("sMario_s_idle"))
-	{p = ms("sMario_s_idle");}
+	groundX -= 2
+	groundX %= 32
+	for (var t = -32; t <= SCREENW; t += 32) {
+		//show_debug_message(t)
+		draw_sprite_ext(sGround_brown, 0, groundX + t, 208, 2, 2, 0, c_white, 1)
+	}
+	smallMarioWalkDex += 0.2
+	bigMarioWalkDex += 0.2
+	smallMarioWalkDex %= sprite_get_number(marSpr)
+	bigMarioWalkDex %= sprite_get_number(marSpr2)
+	marioY += marioYAdd	
+	if marioY >= 206 {
+		marioY = 206
+		marSpr = sMario_s_walk
+		if sprite_exists(ms("sMario_s_walk"))
+		{marSpr = ms("sMario_s_walk");}
 	
-	var scale = 4;
-	if p = sPeterGriffin {scale = 0.5;}
+		marSpr2 = sMario_b_walk
+		if sprite_exists(ms("sMario_b_walk"))
+		{marSpr2 = ms("sMario_b_walk");}
+	} else {
+		marioYAdd += 0.5
+		marSpr = sMario_s_jump
+		if sprite_exists(ms("sMario_s_jump"))
+		{marSpr = ms("sMario_s_jump");}
+	
+		marSpr2 = sMario_b_jump
+		if sprite_exists(ms("sMario_b_jump"))
+		{marSpr2 = ms("sMario_b_jump");}
+	}
+	
+	var scale = 2;
+	if marSpr = sPeterGriffin {scale = 0.35;}
 	
 	shader_set(shdColorswap)
-		apply_palette(global.palettesprite,global.paletteindex,1)
-		draw_sprite_ext(p,0,SCREENW/2+64,160+32+sin(current_time/800)*5,scale+(marioxs*(scale/4)),scale+(marioys*(scale/4)),0,-1,1)
-	
+	apply_palette(global.palettesprite,global.paletteindex,1)
+	draw_sprite_ext(marSpr,smallMarioWalkDex, SCREENW/2 - 24, marioY, scale, scale, 0, c_white, 1)
+	draw_sprite_ext(marSpr2,bigMarioWalkDex, SCREENW/2 + 24, marioY, scale, scale, 0, c_white, 1)
 	shader_reset();
 	
 	draw_set_font(fntComicsmall)
 	draw_set_halign(fa_center);
-	draw_text(SCREENW/2+64,160+32+10,"creator: "+creatorlist[| curplayersel])
+	draw_text(SCREENW/2, 64, "creator: "+creatorlist[| curplayersel])
 	draw_set_halign(fa_left);
+	marioX = lerp(marioX, SCREENW/2 - 24, .1);
 }
 
 marioxs = lerp(marioxs,0,.2);
@@ -97,9 +125,17 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 		draw_text(xx,yy+(i*tsep),menu[# section, i]+ex)
 	}
 	else if menu[# section, i] = "PLAYER - "
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]+string_upper(global.player));}
+	{
+		draw_set_halign(fa_center)
+		draw_text(SCREENW/2,16,menu[# section, i]+string_upper(global.playerName));
+		draw_set_halign(fa_left)
+		}
 	else if menu[# section, i] = "PALETTE - "
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]+string_upper(global.paletteindex));}
+	{
+		draw_set_halign(fa_center)
+		draw_text(SCREENW/2,32,menu[# section, i]+string_upper(global.paletteindex));
+		draw_set_halign(fa_left)
+		}
 	else if menu[# section, i] = "MAX PLAYERS - "
 	{draw_text(xx,yy+(i*tsep),menu[# section, i]+string_upper(global.maxplayers));}
 	else if section = 8 && menu[# section, i] != "BACK"
@@ -195,8 +231,11 @@ global.volsfx = clamp(global.volsfx,0,1);
 
 if menu[# section, sel] = "PLAYER - "
 {
-	if p != 0 && !(!(p = -1 && curplayersel > 0) && !(p = 1 && curplayersel < ds_list_size(playerlist)-1))
-	{marioxs = -1; marioys = 1;}
+	if p != 0 && !(!(p = -1 && curplayersel > 0) && !(p = 1 && curplayersel < ds_list_size(idlist)-1))
+	{	marioY= 206
+		marioYAdd = -7
+		smallMarioWalkDex = 0
+	bigMarioWalkDex = 0}
 	curplayersel += p;
 	if p != 0
 	{
@@ -204,19 +243,25 @@ if menu[# section, sel] = "PLAYER - "
 		updtplayerpalette()
 		savesettings()
 	}
-	curplayersel = clamp(curplayersel,0,ds_list_size(playerlist)-1);
-	global.player = playerlist[| curplayersel]
+	curplayersel = clamp(curplayersel,0,ds_list_size(idlist)-1);
+	global.player = idlist[| curplayersel]
+	global.playerName = playerlist[| curplayersel]
 }
 
 if menu[# section, sel] = "PALETTE - "
 {
 	if p != 0 && !(!(p = -1 && global.paletteindex > 1) && !(p = 1 && global.paletteindex < sprite_get_height(global.palettesprite)-1))
-	{marioxs = -1; marioys = 1;}
+	{	marioY=206
+		marioYAdd = -4
+		smallMarioWalkDex = 0
+	bigMarioWalkDex = 0}
 	
 	global.paletteindex += p;
 	savesettings()
 	
 }
+//show_debug_message(string_lower(global.player))
+//show_debug_message(ds_map_find_value(global.moddedSprites, asset_get_index("sPalette_"+string_lower(global.player))))
 
 // palette
 updtplayerpalette()

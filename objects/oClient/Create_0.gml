@@ -23,10 +23,10 @@ timeout = 0;
 //Send a connection buffer to the server
 var jbuff = buffer_create(32, buffer_grow, 1);
 buffer_seek(jbuff, buffer_seek_start, 0);
-buffer_write(jbuff, buffer_u8, network.join);		//Send the join ID
-buffer_write(jbuff, buffer_u16, idd);				//send the client's ID
-buffer_write(jbuff, buffer_u16, Player);			//send the ID of this client's player
-buffer_write(jbuff, buffer_string, global.username);
+buffer_write(jbuff, buffer_u8, network.join);			//Send the join ID
+buffer_write(jbuff, buffer_u16, idd);					//send the client's ID
+buffer_write(jbuff, buffer_u16, Player);				//send the ID of this client's player
+buffer_write(jbuff, buffer_string, global.username);	//send the client's username
 network_send_packet(client, jbuff, buffer_tell(jbuff));
 buffer_delete(jbuff);
 

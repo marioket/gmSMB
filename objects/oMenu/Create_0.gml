@@ -61,12 +61,7 @@ addmenu(8,6,"BACK")
 
 playerlist = ds_list_create();
 creatorlist = ds_list_create();
-
-addplist = function(name,creator)
-{
-	ds_list_add(playerlist,name);
-	ds_list_add(creatorlist,creator);
-}
+idlist = ds_list_create();
 
 addplist("Mario","nintendo")
 addplist("Luigi","bredi")
@@ -84,6 +79,7 @@ addplist("Owen","owen")
 addplist("Seven","seven")
 addplist("SucculentKicker","dermo")
 addplist("Goldron","goldron")
+ImportModCharacter(working_directory + "mods\\character")
 
 
 
@@ -115,11 +111,23 @@ updtplayerpalette = function()
 {
 	if sprite_exists(asset_get_index("sPalette_"+string_lower(global.player)))
 	{
-		if global.player = "Goomba"	{global.palettesprite = asset_get_index("sPalette_goombaplayer");}
-		else	{global.palettesprite = asset_get_index("sPalette_"+string_lower(global.player));}
+		if global.player = "Goomba"	{
+			global.palettesprite = asset_get_index("sPalette_goombaplayer");
+		} else {
+			global.palettesprite = asset_get_index("sPalette_"+string_lower(global.player));
+		}
 	}
 	else
-	{global.palettesprite = sPalette_mario;}
+	{
+		if ds_map_find_value(global.moddedSprites, "sPalette_"+string_lower(global.player)) != undefined
+			global.palettesprite = ds_map_find_value(global.moddedSprites, "sPalette_"+string_lower(global.player))
+		else
+			global.palettesprite = sPalette_mario;
+	}
+	//show_debug_message($"shit exists checK {sprite_exists(asset_get_index("sPalette_"+string_lower(global.player)))}")
+	//show_debug_message(ds_map_find_value(global.moddedSprites, "sPalette_"+string_lower(global.player)))
+	//show_debug_message(global.player)
+	//show_debug_message(sprite_get_name(global.palettesprite))
 }
 
 
@@ -129,4 +137,11 @@ marioys = 0;
 curplayersel = 0;
 
 depth = -9999
-
+groundX = 0
+smallMarioWalkDex = 0
+bigMarioWalkDex = 0
+marioX = 32
+marioY = 206
+marioYAdd = 0
+marSpr = sMario_s_walk
+marSpr2 = sMario_b_walk

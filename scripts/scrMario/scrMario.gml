@@ -11,17 +11,19 @@ function ms(spritestring)
 		spritestring = string_replace(spritestring,"{}",pu)
 	}
 	spritestring = string_replace(spritestring,"Mario",global.player);
-	
+	//show_debug_message(spritestring)
+	//show_debug_message(asset_get_index(spritestring))
+	//show_debug_message(sprite_exists(asset_get_index(spritestring)))
 	if global.player = "Anton"
 	{return sAnton;}
 	if global.player = "Goldron"
 	{return sGoldron;}
 	if global.player = "Peter Griffin"
 	{return sPeterGriffin;}
-	
 	if sprite_exists(asset_get_index(spritestring))
 	{return asset_get_index(spritestring);}
-	else
+	else if ds_map_find_value(global.moddedSprites, spritestring) != undefined
+	{return ds_map_find_value(global.moddedSprites, spritestring)}
 	{return spr;}
 }
 
@@ -50,7 +52,10 @@ function do_jump()
 		{sfx(sndJumpbig,1);}
 		
 		spr = ms("sMario_{}_jump");
-		ind = 0;
+		if sprite_get_number(spr) == 1
+			ind = 0;
+		else
+			ind += 0.3
 		
 		if state = ps.shoulderbash
 		{spr = ms("sMario_{}_shoulderbash"); ind = 1;}
@@ -116,8 +121,13 @@ function ps_normal()
 
 	if hspd != 0 or !grounded
 	{spr = ms("sMario_{}_walk"); ind += abs(hspd)/7; if place_meeting(x+sign(hspd),y,oCol) {ind += 0.15;}}
-	else
-	{spr = ms("sMario_{}_idle"); ind = 0;}
+	else {
+		spr = ms("sMario_{}_idle"); 
+		if sprite_get_number(spr) == 1
+			ind = 0;
+		else
+			ind += 0.3
+	}
 	
 	do_fire();
 	do_jump();
@@ -215,7 +225,15 @@ function ps_jump()
 	do_fire();
 	
 	if global.player = "Luigi" {ind += 0.4;}
-	if global.player = "Martin" {ind += 0.3;}
+	else if global.player = "Martin" {ind += 0.3;}
+	else {
+		if spr != ms("sMario_{}_walk") {
+			if sprite_get_number(spr) == 1
+				ind = 0;
+			else
+				ind += 0.3
+		}
+	}
 	
 	collide();
 	
@@ -400,7 +418,10 @@ function ps_firetransform()
 			state = ps.jump;
 			spr = ms("sMario_{}_jump");
 		
-			ind = 0;
+			if sprite_get_number(spr) == 1
+				ind = 0;
+			else
+				ind += 0.3
 		
 			holdjump = 30;
 		}

@@ -30,7 +30,7 @@ var cy = camera_get_view_y(view_camera[0])
 
 // MARIO
 var tile = 8;
-draw_text((tile*2)+tile+cx,tile+cy,string_upper(global.player))
+draw_text((tile*2)+tile+cx,tile+cy,string_upper(global.playerName))
 
 
 // Score

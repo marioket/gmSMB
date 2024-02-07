@@ -2,10 +2,11 @@ function savesettings()
 {
 	var sav = "gmsmbsave.ini"
 	
-	if file_exists(sav) {file_delete(sav);}
+	//if file_exists(sav) {file_delete(sav);}
 	ini_open(sav);
 	
 	var charname = global.player
+	var charid = global.playerName
 	var charpalette = global.palettesprite
 	var charpaletteindex = global.paletteindex
 	var username = global.username
@@ -24,6 +25,7 @@ function savesettings()
 	
 	var secCHAR = "character/costume"
 	ini_write_string(secCHAR,"charname",charname);
+	ini_write_string(secCHAR, "charid", charid);
 	ini_write_real(secCHAR,"charpalette",charpalette);
 	ini_write_real(secCHAR,"charpaletteindex",charpaletteindex);
 	var secONLINE = "online"
@@ -62,6 +64,7 @@ function loadsettings()
 		var secCTRL = "controls"
 		
 		var charname = ini_read_string(secCHAR,"charname","Mario");
+		var charid = ini_read_string(secCHAR, "charid", "Mario");
 		var charpalette = ini_read_real(secCHAR,"charpalette",0);
 		var charpaletteindex = ini_read_real(secCHAR,"charpaletteindex",0);
 		var username = ini_read_string(secONLINE,"username",string(random_range(0,10000)));
@@ -79,6 +82,7 @@ function loadsettings()
 		var kj = ini_read_real(secCTRL,"kj",global.keyj)
 		
 		global.player = charname;
+		global.playerName = charid
 		global.palettesprite = charpalette
 		global.paletteindex = charpaletteindex
 		global.username = username;

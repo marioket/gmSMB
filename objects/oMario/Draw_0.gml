@@ -53,7 +53,7 @@ if starman != 0
 	gpu_set_fog(false,-1,1,1);
 	
 	if starman mod 3 = 0
-	{var smsfx = instance_create_depth(x,y,depth+2,oStarmanFX); smsfx.image_xscale = image_xscale; smsfx.col = make_color_hsv((starman) mod 255,255,255); smsfx.image_index = ind; smsfx.sprite_index = spr;}
+	{var smsfx = instance_create_depth(x,y,depth+2,oStarmanFX); smsfx.image_xscale = image_xscale; smsfx.col = make_color_hsv((starman) mod 255,255,255); smsfx.sprite_index = spr; smsfx.image_index = ind;}
 }
 
 
@@ -62,8 +62,8 @@ if shoulderbash > 0 && (current_time/1000) mod 5 = 0
 	var smsfx = instance_create_depth(x,y,depth+2,oStarmanFX); 
 	smsfx.image_xscale = image_xscale; 
 	smsfx.col = choose(c_red,c_purple);
-	smsfx.image_index = ind; 
 	smsfx.sprite_index = spr;
+	smsfx.image_index = ind; 
 }
 
 

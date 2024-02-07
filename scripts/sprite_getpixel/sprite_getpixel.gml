@@ -81,6 +81,7 @@ function sprite_getpixel(argument0, argument1, argument2, argument3, returnfloat
 	if (exists == 2){
 	    var arr = global.sprBuff[? key];
 	    var buff = arr[_subimg];
+		
     
 	    buffer_seek(buff, buffer_seek_start, 4*((sprW*_y)+_x));
 		

@@ -5,20 +5,22 @@ function timeunits(amt)
 function init()
 {
 	randomize();
-	
 
 	#macro SCREENW 416 // 384 // 256
 	#macro SCREENH 232 // 232/240
 	#macro TIMESEC 0.4
 	#macro FNT font_add_sprite_ext(sFont,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-+*!.:©bredi",0,0)
-	#macro VERSION "2.0"
+	#macro VERSION "2.1"
 	
 	global.score = 0;
 	global.coins = 0;
 	global.time = -1
 	global.player = "Mario"
+	global.playerName = "Mario"
 	global.palettesprite = sPalette_mario;
 	global.paletteindex = 1;
+	global.moddedSprites = ds_map_create();
+	ImportModSprites(working_directory + "mods\\character")
 
 	global.ch[0] = -1 //Sound
 	global.ch[1] = -1 //Sound
