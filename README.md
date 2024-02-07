@@ -1,3 +1,3 @@
- - GMS2 version: v2022.9.1.66, IDE v2022.9.1.51 -
+ - GMS2 IDE: v2023.11.1.129, Runtime v2022.11.1.160 -
 
 there might be a lot of spaghetti code. Sorry for that
