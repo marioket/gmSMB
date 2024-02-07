@@ -109,7 +109,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sTemplate_s_pivot.png","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sTemplate_s_swim.png","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sTemplate_s_walk.png","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"template.zip","CopyToMask":-1,"filePath":"datafiles/mods",},
   ],
   "isEcma": false,
   "LibraryEmitters": [],
