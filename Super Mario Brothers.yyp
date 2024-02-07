@@ -526,6 +526,7 @@
     {"id":{"name":"sMultiplebricks","path":"sprites/sMultiplebricks/sMultiplebricks.yy",},},
     {"id":{"name":"sNokonoko_winged_green","path":"sprites/sNokonoko_winged_green/sNokonoko_winged_green.yy",},},
     {"id":{"name":"txr_build_loop_body","path":"scripts/txr_build_loop_body/txr_build_loop_body.yy",},},
+    {"id":{"name":"sTodo","path":"sprites/sTodo/sTodo.yy",},},
     {"id":{"name":"oDebris","path":"objects/oDebris/oDebris.yy",},},
     {"id":{"name":"oSlope","path":"objects/oSlope/oSlope.yy",},},
     {"id":{"name":"sPalette_seven","path":"sprites/sPalette_seven/sPalette_seven.yy",},},

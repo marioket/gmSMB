@@ -379,6 +379,7 @@
     {"name":"sMultiplebricks","order":6,"path":"sprites/sMultiplebricks/sMultiplebricks.yy",},
     {"name":"sNokonoko_winged_green","order":24,"path":"sprites/sNokonoko_winged_green/sNokonoko_winged_green.yy",},
     {"name":"txr_build_loop_body","order":2,"path":"scripts/txr_build_loop_body/txr_build_loop_body.yy",},
+    {"name":"sTodo","order":20,"path":"sprites/sTodo/sTodo.yy",},
     {"name":"oDebris","order":2,"path":"objects/oDebris/oDebris.yy",},
     {"name":"oSlope","order":11,"path":"objects/oSlope/oSlope.yy",},
     {"name":"sPalette_seven","order":14,"path":"sprites/sPalette_seven/sPalette_seven.yy",},
