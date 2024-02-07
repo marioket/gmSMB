@@ -3,7 +3,7 @@
 //draw_text(room_width/2+64, 16, "Ping: " + string(latency));
 draw_set_font(FNT);
 //draw_text(16, 10, " - CONNECTED");
-draw_text(16, 40, "PING -  " + string(latency));
+draw_text(16, 24, "PING -  " + string(latency));
 
 
 

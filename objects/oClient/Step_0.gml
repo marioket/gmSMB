@@ -9,6 +9,7 @@ buffer_write(lbuff, buffer_u8, network.latency);
 buffer_write(lbuff, buffer_u32, current_time);
 network_send_packet(client, lbuff, buffer_tell(lbuff));
 
+//show_debug_message(timeout)
 //Check to see if the player has timed-out
 timeout ++;		//increment the timeout, so it can be reset in the latency packet
 

@@ -5,8 +5,8 @@ port = global.port
 max_players = global.maxplayers
 
 
-server = network_create_server_raw(network_socket_tcp, port, max_players);
-//server = network_create_server(network_socket_tcp, port, max_players);
+//server = network_create_server_raw(network_socket_tcp, port, max_players);
+server = network_create_server(network_socket_tcp, port, max_players);
 total_players = ds_list_create();
 
 //create a map to keep track of clients
@@ -35,4 +35,3 @@ ds_list_add(cmbool,"rtxmode")
 //ds_list_add(cmbool,"arena")
 
 ds_list_add(cmoptions,"Begin game")	ds_list_add(cmbool,-1)
-
