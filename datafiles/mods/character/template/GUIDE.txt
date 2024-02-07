@@ -25,6 +25,7 @@ copy this row and move it down 1 pixel, this is the "default palette"
 copy this row and move it down 1 pixel, then edit the colors for the fire flower palette
 from this point onward, any extra rows are custom palettes you can equip in the options menu.
 the palette sprite must be 8 pixels in width. i dont know why. it just crashes if you dont.
+(This is probably me not actually understanding how the palette system works! Oops!!)
 
 it is recommended that grow and shrink stay at 14 and 17 frames in length respectively for timing ingame
 
