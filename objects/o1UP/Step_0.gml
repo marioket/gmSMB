@@ -1,0 +1,1 @@
+hud_spr_1up(self);
