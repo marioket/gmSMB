@@ -249,7 +249,8 @@ function ps_pivot()
 	spr = ms("sMario_{}_pivot");
 	
 	if global.player = "Martin" {ind += 0.4;}
-	
+	if !audio_is_playing(sndPivot)
+		sfx(sndPivot, 0)
 	
 	var deccel = 0.12
 	if abs(hspd) > 0
