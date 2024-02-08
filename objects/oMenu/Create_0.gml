@@ -48,9 +48,9 @@ addmenu(6,3,"BACK")
 
 addmenu(7,0,"TOGGLE FULLSCREEN")
 //addmenu(7,1,"RESOLUTION - ")      still working on it - mcpig
-addmenu(7,2,"RESET WINDOW")
-addmenu(7,3,"HIDE - SHOW DISCORD PFP")
-addmenu(7,4,"BACK")
+addmenu(7,1,"RESET WINDOW")
+addmenu(7,2,"HIDE - SHOW DISCORD PFP")
+addmenu(7,3,"BACK")
 
 addmenu(8,0,"UP")
 addmenu(8,1,"DOWN")
