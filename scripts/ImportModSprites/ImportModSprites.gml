@@ -17,10 +17,9 @@ function ImportModSounds(_directory) {
 		var soundFolder = $"{directoryArray[i]}\\sound\\"
 		var mySoundCurrent = file_find_first($"{soundFolder}*", fa_none)
 		while mySoundCurrent != "" {
-			show_debug_message(mySoundCurrent)
 			var soundAdded = audio_create_stream($"{soundFolder}{mySoundCurrent}")
-			var soundName = string_replace(string_replace(mySoundCurrent, $"{directoryArray[i]}\\sound\\", ""), ".ogg", "")
-			show_debug_message(soundName)
+			var soundName = string_replace(mySoundCurrent, ".ogg", "")
+			show_debug_message($"soundname:{soundName}")
 			ds_map_add(global.moddedSounds, soundName, soundAdded)
 			show_debug_message(ds_map_find_value(global.moddedSounds, soundName))
 			if ds_map_find_value(global.moddedSounds, soundName) != undefined 
