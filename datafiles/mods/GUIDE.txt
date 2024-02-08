@@ -34,6 +34,8 @@ MAIN.INI INFO
 the id variable is the name your sprites will be added under internally. make sure this does not conflict with any other mods you have on. it cannot have any spaces in it
 for frame counts, just type out a sprite name in the correct area, put an equals after it and then a number to specify frame count
 
+you can declare x and y origins for specific sprites by adding xOrigin and yOrigin respectively after the sprite name
+
 
 SOUND INFO
 
