@@ -14,6 +14,18 @@ function sfx(sound,channel)
 
 function bgm(bgmstr,loops)
 {
+	var dieSound = msnd("sndDie")
+	var dieSoundName = $"sndDie_{global.player}"
+	if bgmstr = "GO" && ds_map_find_value(global.moddedSounds, dieSoundName) != undefined {
+		audio_stop_sound(global.ch[0]);
+		audio_stop_sound(global.ch[1]);
+		audio_stop_sound(global.ch[2]);
+		audio_stop_sound(global.ch[3]);
+		audio_stop_sound(global.ch[4]);
+		global.ch[4] = audio_play_sound(ds_map_find_value(global.moddedSounds, dieSoundName),1,loops,global.volbgm);
+		exit;
+	}
+			
 	if instance_exists(oRacemanager) && !(bgmstr = "Levelend" or bgmstr = "GO")
 	{
 		exit;
@@ -31,15 +43,19 @@ function bgm(bgmstr,loops)
 		
 		audio_stop_all();
 	
-		var c0 = asset_get_index("mus"+bgmstr+"_c0")
-		var c1 = asset_get_index("mus"+bgmstr+"_c1")
-		var c2 = asset_get_index("mus"+bgmstr+"_c2")
-		var c3 = asset_get_index("mus"+bgmstr+"_c3")
+		if bgmstr = "GO" && ds_map_find_value(global.moddedSounds, dieSoundName) != undefined {
+			global.ch[4] = audio_play_sound(ds_map_find_value(global.moddedSounds, dieSoundName),1,loops,global.volbgm);
+		} else {
+			var c0 = asset_get_index("mus"+bgmstr+"_c0")
+			var c1 = asset_get_index("mus"+bgmstr+"_c1")
+			var c2 = asset_get_index("mus"+bgmstr+"_c2")
+			var c3 = asset_get_index("mus"+bgmstr+"_c3")
 	
-		if audio_exists(c0) {global.ch[0] = audio_play_sound(c0,1,loops,global.volbgm);}
-		if audio_exists(c1) {global.ch[1] = audio_play_sound(c1,1,loops,global.volbgm);}
-		if audio_exists(c2) {global.ch[2] = audio_play_sound(c2,1,loops,global.volbgm);}
-		if audio_exists(c3) {global.ch[3] = audio_play_sound(c3,1,loops,global.volbgm);}
+			if audio_exists(c0) {global.ch[0] = audio_play_sound(c0,1,loops,global.volbgm);}
+			if audio_exists(c1) {global.ch[1] = audio_play_sound(c1,1,loops,global.volbgm);}
+			if audio_exists(c2) {global.ch[2] = audio_play_sound(c2,1,loops,global.volbgm);}
+			if audio_exists(c3) {global.ch[3] = audio_play_sound(c3,1,loops,global.volbgm);}
+		}
 	}
 	else
 	{
@@ -63,7 +79,8 @@ function bgm(bgmstr,loops)
 				if global.player = "Martin"
 				{mus = musMartin;}
 			}
-			
+			if ds_map_find_value(global.moddedSounds, dieSoundName) != undefined && bgmstr == "GO"
+				mus = ds_map_find_value(global.moddedSounds, dieSoundName)
 			global.ch[4] = audio_play_sound(mus,1,loops,global.volbgm);
 			
 		}

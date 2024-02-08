@@ -5,7 +5,30 @@ function addplist(name,creator,_id = name)
 	ds_list_add(idlist, _id)
 }
 
-
+function ImportModSounds(_directory) {
+	show_debug_message("doing sounds or sum")
+	var directoryArray = []
+	var myDirArray = file_find_first($"{_directory}\\*", fa_directory)
+	while myDirArray != "" {
+			array_push(directoryArray, $"{_directory}\\{myDirArray}")
+		myDirArray = file_find_next()
+	}
+	for (var i = 0; i < array_length(directoryArray); i++) {
+		var soundFolder = $"{directoryArray[i]}\\sound\\"
+		var mySoundCurrent = file_find_first($"{soundFolder}*", fa_none)
+		while mySoundCurrent != "" {
+			show_debug_message(mySoundCurrent)
+			var soundAdded = audio_create_stream($"{soundFolder}{mySoundCurrent}")
+			var soundName = string_replace(string_replace(mySoundCurrent, $"{directoryArray[i]}\\sound\\", ""), ".ogg", "")
+			show_debug_message(soundName)
+			ds_map_add(global.moddedSounds, soundName, soundAdded)
+			show_debug_message(ds_map_find_value(global.moddedSounds, soundName))
+			if ds_map_find_value(global.moddedSounds, soundName) != undefined 
+				show_debug_message($"Added sound {soundAdded} to ds map global.moddedSounds under {soundName}")
+			mySoundCurrent = file_find_next()
+		}
+	}
+}
 
 function ImportModSprites(_directory){
 	var directoryArray = []

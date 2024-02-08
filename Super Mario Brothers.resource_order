@@ -122,6 +122,7 @@
     {"name":"sOwen_b_jump","order":1,"path":"sprites/sOwen_b_jump/sOwen_b_jump.yy",},
     {"name":"server_data","order":1,"path":"scripts/server_data/server_data.yy",},
     {"name":"musUG_c2","order":11,"path":"sounds/musUG_c2/musUG_c2.yy",},
+    {"name":"oArenaSpawn","order":37,"path":"objects/oArenaSpawn/oArenaSpawn.yy",},
     {"name":"sMartin_s_pivot","order":9,"path":"sprites/sMartin_s_pivot/sMartin_s_pivot.yy",},
     {"name":"txr_throw","order":3,"path":"scripts/txr_throw/txr_throw.yy",},
     {"name":"sToad_b_walk","order":4,"path":"sprites/sToad_b_walk/sToad_b_walk.yy",},

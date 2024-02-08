@@ -20,7 +20,9 @@ function init()
 	global.palettesprite = sPalette_mario;
 	global.paletteindex = 1;
 	global.moddedSprites = ds_map_create();
+	global.moddedSounds = ds_map_create();
 	ImportModSprites(working_directory + "mods\\character")
+	ImportModSounds(working_directory + "mods\\character")
 
 	global.ch[0] = -1 //Sound
 	global.ch[1] = -1 //Sound

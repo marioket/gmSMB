@@ -26,7 +26,18 @@ function ms(spritestring)
 	{return ds_map_find_value(global.moddedSprites, spritestring)}
 	{return spr;}
 }
+function msnd(soundstring)
+{
+	var mySnd = $"{soundstring}_{global.player}"
+	//show_debug_message(mySnd)
 
+	if asset_get_index(mySnd) != -1
+	{return asset_get_index(mySnd);}
+	else if ds_map_find_value(global.moddedSounds, mySnd) != undefined
+	{return ds_map_find_value(global.moddedSounds, mySnd)}
+	else
+	{return asset_get_index(soundstring)}
+}
 function do_jump()
 {
 	if global.environment = e.underwater 
@@ -46,10 +57,12 @@ function do_jump()
 	{
 		jumpbuffer = 0;
 		
+		var smallJump = msnd("sndJump")
+		var bigJump = msnd("sndJumpbig")
 		if powerup = "s"
-		{sfx(sndJump,1);}
+		{sfx(smallJump,1);}
 		else
-		{sfx(sndJumpbig,1);}
+		{sfx(bigJump,1);}
 		
 		spr = ms("sMario_{}_jump");
 		if sprite_get_number(spr) == 1
@@ -410,10 +423,12 @@ function ps_firetransform()
 		{
 			jumpbuffer = 0;
 		
+			var smallJump = msnd("sndJump")
+			var bigJump = msnd("sndJumpbig")
 			if powerup = "s"
-			{sfx(sndJump,1);}
+			{sfx(smallJump,1);}
 			else
-			{sfx(sndJumpbig,1);}
+			{sfx(bigJump,1);}
 		
 			vspd = -3 -(abs(hspd)/6);
 			state = ps.jump;

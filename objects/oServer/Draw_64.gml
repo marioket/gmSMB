@@ -36,11 +36,12 @@ if choosingmode = true
 		{draw_sprite(sCheckbox,sign(gv),32+16,64+(i*16));}
 		
 		
-		//if cmoptions[| i] = "Arena (-DOES NOT WORK-):"
-		//{draw_text(64,64+(i*16)-4,cmoptions[| i]+" "+string(gv));}
-		//else
-		//{
+		if cmoptions[| i] = "Arena (-DOES NOT WORK-):"
+		{draw_text(64,64+(i*16)-4,cmoptions[| i]+" "+string(gv));}
+		else
+		{
 		draw_text(64,64+(i*16)-4,cmoptions[| i]);
+		}
 	}
 	
 	draw_sprite(sMushsel,0,32,64+(cmsel*16))
