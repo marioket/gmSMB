@@ -6,8 +6,10 @@ function init()
 {
 	randomize();
 
-	#macro SCREENW 416 // 384 // 256
-	#macro SCREENH 232 // 232/240
+	#macro SCREENW_WIDE 416 // 384 // 256
+	#macro SCREENH_WIDE 232 // 232/240
+	#macro SCREENW_BASE 256
+	#macro SCREENH_BASE 240
 	#macro TIMESEC 0.4
 	#macro FNT font_add_sprite_ext(sFont,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-+*!.:©bredi",0,0)
 	#macro VERSION "2.1"
@@ -23,6 +25,8 @@ function init()
 	global.moddedSounds = ds_map_create();
 	ImportModSprites(working_directory + "mods\\character")
 	ImportModSounds(working_directory + "mods\\character")
+	globalvar SCREENW; SCREENW = SCREENW_WIDE
+	globalvar SCREENH; SCREENH = SCREENH_WIDE
 
 	global.ch[0] = -1 //Sound
 	global.ch[1] = -1 //Sound

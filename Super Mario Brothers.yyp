@@ -94,7 +94,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sndJump_Jumpman.ogg","CopyToMask":-1,"filePath":"datafiles/mods/character/arcademario/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sndJumpbig_Jumpman.ogg","CopyToMask":-1,"filePath":"datafiles/mods/character/arcademario/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sPalette_jumpman.png","CopyToMask":-1,"filePath":"datafiles/mods/character/arcademario",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"GUIDE.txt","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"GUIDE.txt","CopyToMask":-1,"filePath":"datafiles/mods",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"main.ini","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sPalette_template.png","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sTemplate_b_climb.png","CopyToMask":-1,"filePath":"datafiles/mods/character/template",},
