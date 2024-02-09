@@ -1,4 +1,6 @@
 if !dead {
-	dead = true
-	sfx(sndDieShort, 0)
+	if onview() {
+		dead = true
+		sfx(sndDieShort, 0)
+	}
 }
