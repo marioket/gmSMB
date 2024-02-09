@@ -22,6 +22,9 @@ function savesettings()
 	var kr = global.keyr;
 	var ka = global.keya;
 	var kj = global.keyj;
+	var resolution = global.resolutionSetting
+	var letterbox = global.letterboxSelected
+	var letterboxdark = global.letterboxDark
 	
 	var secCHAR = "character/costume"
 	ini_write_string(secCHAR,"charname",charname);
@@ -38,6 +41,9 @@ function savesettings()
 	ini_write_real(secAUDIO,"classicaudio",classicaudio);
 	var secETC = "etc"
 	ini_write_real(secETC,"hidediscordpfp",hidediscordpfp);
+	ini_write_string(secETC, "res", resolution);
+	ini_write_real(secETC, "letterbox", letterbox);
+	ini_write_real(secETC, "letterboxdark", letterboxdark);
 	var secCTRL = "controls"
 	ini_write_real(secCTRL,"ku",ku)
 	ini_write_real(secCTRL,"kd",kd)
@@ -74,6 +80,9 @@ function loadsettings()
 		var bgmvolume = ini_read_real(secAUDIO,"bgmvolume",1);
 		var classicaudio = ini_read_real(secAUDIO,"classicaudio",1);
 		var hidediscordpfp = ini_read_real(secETC,"hidediscordpfp",0);
+		var resolution = ini_read_string(secETC, "res", "WIDESCREEN");
+		var letterboxdark = ini_read_real(secETC, "letterboxdark", 0);
+		var letterbox = ini_read_real(secETC, "letterbox", 0);
 		var ku = ini_read_real(secCTRL,"ku",global.keyu)
 		var kd = ini_read_real(secCTRL,"kd",global.keyd)
 		var kl = ini_read_real(secCTRL,"kl",global.keyl)
@@ -98,8 +107,24 @@ function loadsettings()
 		global.keyr = kr
 		global.keya = ka
 		global.keyj = kj
-
+		global.resolutionSetting = resolution
+		global.letterboxSelected = letterbox
+		global.letterboxDark = letterboxdark
+		global.letterboxSprite = global.letterboxes[global.letterboxSelected].spr
 	
 		ini_close();
+		
+		//update res
+		SCREENW = SCREENW_WIDE
+		SCREENH = SCREENH_WIDE
+		if global.resolutionSetting == "STANDARD" {
+			SCREENW = SCREENW_BASE
+			SCREENH = SCREENH_BASE
+		}
+		camera_set_view_size(view_camera[0], SCREENW, SCREENH)
+		surface_resize(application_surface,SCREENW,SCREENH)
+		var scrsizemult = 3;
+		window_set_size(SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+		window_center()
 	}
 }

@@ -1,6 +1,6 @@
 global.environment = e.overworld
 audio_stop_all();
-bgm(-1,0)
+bgm("Title", true)
 
 
 global.freecam = false;

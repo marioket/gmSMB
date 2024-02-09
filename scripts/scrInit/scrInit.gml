@@ -7,7 +7,7 @@ function init()
 	randomize();
 
 	#macro SCREENW_WIDE 416 // 384 // 256
-	#macro SCREENH_WIDE 232 // 232/240
+	#macro SCREENH_WIDE 240 // 232/240
 	#macro SCREENW_BASE 256
 	#macro SCREENH_BASE 240
 	#macro TIMESEC 0.4
@@ -25,8 +25,46 @@ function init()
 	global.moddedSounds = ds_map_create();
 	ImportModSprites(working_directory + "mods\\character")
 	ImportModSounds(working_directory + "mods\\character")
+	global.letterboxSprite = sLetterbox_Red
+	global.letterboxSelected = 0
+	global.letterboxDark = 0
+	global.letterboxes = [
+	{	
+		name : "RED",
+		spr : sLetterbox_Red
+	},
+	{	
+		name : "BLUE",
+		spr : sLetterbox_Blue
+	},
+	{	
+		name : "GREEN",
+		spr : sLetterbox_Green
+	},
+	{	
+		name : "YELLOW",
+		spr : sLetterbox_Yellow
+	},
+	{	
+		name : "PINK",
+		spr : sLetterbox_Pink
+	},
+	{	
+		name : "PURPLE",
+		spr : sLetterbox_Purple
+	},
+	{	
+		name : "ORANGE",
+		spr : sLetterbox_Orange
+	},
+	]
+	global.resolutionSetting = "WIDESCREEN"
 	globalvar SCREENW; SCREENW = SCREENW_WIDE
 	globalvar SCREENH; SCREENH = SCREENH_WIDE
+	if global.resolutionSetting == "STANDARD" {
+		SCREENW = SCREENW_BASE
+		SCREENH = SCREENH_BASE
+	}
 
 	global.ch[0] = -1 //Sound
 	global.ch[1] = -1 //Sound
@@ -93,14 +131,16 @@ function init()
 	#region screen
 	
 		window_set_caption("gmSMB "+VERSION);
-		
+		//application_surface_draw_enable(false);
 		
 		var scrsizemult = 3;
 		var displayw = display_get_width();
 		var displayh = display_get_height();
-		var xpos = (displayw / 2) - (SCREENW*scrsizemult)/2;
-		var ypos = (displayh / 2) - (SCREENH*scrsizemult)/2;
-		window_set_rectangle(xpos,ypos,SCREENW*scrsizemult,SCREENH*scrsizemult);
+		var xpos = (displayw / 2) - (SCREENW_WIDE*scrsizemult)/2;
+		var ypos = (displayh / 2) - (SCREENH_WIDE*scrsizemult)/2;
+		//window_set_rectangle(xpos,ypos,SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+		window_set_size(SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+		window_center()
 
 		view_enabled = true;
 		view_visible[0] = true;

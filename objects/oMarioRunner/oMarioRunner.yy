@@ -1,19 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oMenu",
+  "name": "oMarioRunner",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "miscfx",
+    "path": "folders/Objects/miscfx.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -32,9 +30,12 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sTitle2",
-    "path": "sprites/sTitle2/sTitle2.yy",
+    "name": "sMario_s_walk",
+    "path": "sprites/sMario_s_walk/sMario_s_walk.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "sMariomask0",
+    "path": "sprites/sMariomask0/sMariomask0.yy",
+  },
   "visible": true,
 }

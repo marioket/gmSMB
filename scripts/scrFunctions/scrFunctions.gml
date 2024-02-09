@@ -33,7 +33,7 @@ function bgm(bgmstr,loops)
 	
 	if is_string(bgmstr) && global.musicchannels = true && global.player != "Peter Griffin" &&
 		global.player != "Martin" && global.player != "Anton"
-		&& bgmstr != "Levelend" && bgmstr != "Castleend" && bgmstr != "Lobby"
+		&& bgmstr != "Levelend" && bgmstr != "Castleend" && bgmstr != "Lobby" && bgmstr != "Title"
 	{
 		audio_stop_sound(global.ch[0]);
 		audio_stop_sound(global.ch[1]);
@@ -97,26 +97,31 @@ function bgm(bgmstr,loops)
 
 function points(amnt,give)
 {
-	var p = instance_create_depth((bbox_left+sprite_width/2),bbox_top-8,-9999,oPoints);
-	var ind = 0
-	switch(amnt)
-	{
-		case 100: ind = 1; break;
-		case 200: ind = 2; break;
-		case 400: ind = 3; break;
-		case 500: ind = 4; break;
-		case 800: ind = 5; break;
-		case 1000: ind = 6; break;
-		case 2000: ind = 7; break;
-		case 4000: ind = 8; break;
-		case 5000: ind = 9; break;
-		case 8000: ind = 10; break;
-	}
-	if ind != 0
-	{
+	if onview() {
+		var p = instance_create_depth((bbox_left+sprite_width/2),bbox_top-8,-9999,oPoints);
+		var ind = 0
+		switch(amnt)
+		{
+			case 100: ind = 1; break;
+			case 200: ind = 2; break;
+			case 400: ind = 3; break;
+			case 500: ind = 4; break;
+			case 800: ind = 5; break;
+			case 1000: ind = 6; break;
+			case 2000: ind = 7; break;
+			case 4000: ind = 8; break;
+			case 5000: ind = 9; break;
+			case 8000: ind = 10; break;
+		}
+		if ind != 0
+		{
+			if give = true
+			{global.score += amnt;}
+			p.image_index = ind;
+		}
+	} else {
 		if give = true
-		{global.score += amnt;}
-		p.image_index = ind;
+			{global.score += amnt;}
 	}
 }
 

@@ -1,4 +1,4 @@
-function ms(spritestring)
+function ms(spritestring, char = global.player)
 {
 	var pu = "s"
 	
@@ -10,15 +10,15 @@ function ms(spritestring)
 	
 		spritestring = string_replace(spritestring,"{}",pu)
 	}
-	spritestring = string_replace(spritestring,"Mario",global.player);
+	spritestring = string_replace(spritestring,"Mario",char);
 	//show_debug_message(spritestring)
 	//show_debug_message(asset_get_index(spritestring))
 	//show_debug_message(sprite_exists(asset_get_index(spritestring)))
-	if global.player = "Anton"
+	if char = "Anton"
 	{return sAnton;}
-	if global.player = "Goldron"
+	if char = "Goldron"
 	{return sGoldron;}
-	if global.player = "Peter Griffin"
+	if char = "Peter Griffin"
 	{return sPeterGriffin;}
 	if sprite_exists(asset_get_index(spritestring))
 	{return asset_get_index(spritestring);}

@@ -123,6 +123,7 @@ if loadscreen > -1
 	shader_reset();
 	
 	instance_deactivate_all(true)
+	instance_activate_object(oLetterbox)
 	
 	if loadscreen = -1
 	{instance_activate_all();}

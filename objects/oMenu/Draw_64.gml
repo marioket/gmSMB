@@ -1,16 +1,26 @@
 var cx = camera_get_view_x(view_camera[0])
 var cy = camera_get_view_y(view_camera[0])
 
-var xx = 88-cx;
-var yy = 136-cy;
+//var xx = 88-cx;
+//var yy = 136-cy;
+var xx = SCREENW / 2
+var yy = y + 136-cy;
 var tsep = 16;
+x = xx
+//show_debug_message($"{room_width}   {room_height}")
 
 
 if section = 0
 {
 	shader_set(shdColorswap);
-		apply_palette(sPalette_tilebrown,global.environment,1);
-		draw_sprite(sTitle2,image_index,x-cx,y-cy+8);
+	apply_palette(sPalette_tilebrown,global.environment,1);
+	draw_sprite(sTitle2,image_index,x,y-cy);
+	/*draw_set_font(FNT);
+	draw_set_color(#ffcec5);
+	draw_set_halign(fa_right);
+	draw_text(x + 98, y + 112, $"V{VERSION}");
+	draw_set_color(c_white);
+	draw_set_halign(fa_left);   changed my mind on version on the title screen*/
 	shader_reset();
 	
 	global.time = -1;
@@ -19,11 +29,10 @@ else
 {
 	draw_set_alpha(0.9);
 	draw_set_color(c_black);
-	draw_rectangle(0,0,SCREENW,SCREENH,false);
+	draw_rectangle(0,0,SCREENW - 1,SCREENH,false);
 	draw_set_color(-1);
 	draw_set_alpha(1);
 	
-	xx = SCREENW/3.5;
 	yy = 64;
 	tsep = 16;
 }
@@ -53,7 +62,7 @@ if section = 3
 		if sprite_exists(ms("sMario_b_walk"))
 		{marSpr2 = ms("sMario_b_walk");}
 	} else {
-		marioYAdd += 0.5
+		marioYAdd += 0.4
 		marSpr = sMario_s_jump
 		if sprite_exists(ms("sMario_s_jump"))
 		{marSpr = ms("sMario_s_jump");}
@@ -74,7 +83,7 @@ if section = 3
 	
 	draw_set_font(fntComicsmall)
 	draw_set_halign(fa_center);
-	draw_text(SCREENW/2, 64, "creator: "+creatorlist[| curplayersel])
+	draw_text(SCREENW/2, 32, "creator: "+creatorlist[| curplayersel])
 	draw_set_halign(fa_left);
 	marioX = lerp(marioX, SCREENW/2 - 24, .1);
 }
@@ -87,59 +96,68 @@ draw_set_font(FNT);
 
 for (var i = 0; i < optionsnum[section]; i ++;)
 {
-	if i = sel	{draw_sprite(sMushsel,0,xx-16,yy+(i*tsep));}
 	
 	#region different buttons to draw
-	
+	draw_set_halign(fa_center);
 	if menu[# section, i] = "SFX"
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]+" * "+string(round(global.volsfx*100)))}
+	{var text = menu[# section, i]+" * "+string(round(global.volsfx*100))}
 	else if menu[# section, i] = "BGM"
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]+" * "+string(round(global.volbgm*100)))}
-	else if menu[# section, i] = "BACK"
-	{draw_sprite(sBacksel,0,xx,yy+(i*tsep)); draw_text(xx+16,yy+(i*tsep),menu[# section, i]);}
+	{var text = menu[# section, i]+" * "+string(round(global.volbgm*100))}
+	//else if menu[# section, i] = "BACK"
+	//{draw_sprite(sBacksel,0,xx,yy+(i*tsep)); draw_text(xx+16,yy+(i*tsep),menu[# section, i]);}
 	else if menu[# section, i] = "USERNAME - "
 	{
-		draw_text(xx,yy+(i*tsep),menu[# section, i])
-		draw_set_font(fntComic)
-		draw_text(xx+(8*11),yy+(i*tsep)-4,global.username)
-		draw_set_font(FNT)
+		var text = $"{menu[# section, i]}{string_upper(global.username)}"
+		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.username}")
+		//draw_set_font(fntComic)
+		//draw_text(xx+(8*11),yy+(i*tsep)-4,global.username)
+		//draw_set_font(FNT)
 	}
 	else if menu[# section, i] = "SET IP - "
 	{
-		draw_text(xx,yy+(i*tsep),menu[# section, i])
-		draw_set_font(fntComic)
-		draw_text(xx+(8*10),yy+(i*tsep)-4,global.ip)
-		draw_set_font(FNT)
+		var text = $"{menu[# section, i]}{global.ip}"
+		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.ip}")
+		//draw_set_font(fntComic)
+		//draw_text(xx+(8*10),yy+(i*tsep)-4,global.ip)
+		//draw_set_font(FNT)
 	}
 	else if menu[# section, i] = "SET PORT - "
 	{
-		draw_text(xx,yy+(i*tsep),menu[# section, i])
-		draw_set_font(fntComic)
-		draw_text(xx+(8*11),yy+(i*tsep)-4,global.port)
-		draw_set_font(FNT)
+		var text = $"{menu[# section, i]}{global.port}"
+		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.port}")
+		//draw_set_font(fntComic)
+		//draw_text(xx+(8*11),yy+(i*tsep)-4,global.port)
+		//draw_set_font(FNT)
 	}
 	else if menu[# section, i] = "SOUND MODE - "
 	{
 		var ex = "CLASSIC"
 		if global.musicchannels = false {ex = "MODERN";}
-		draw_text(xx,yy+(i*tsep),menu[# section, i]+ex)
+		var text = menu[# section, i]+ex
+		//draw_text(xx,yy+(i*tsep),menu[# section, i]+ex)
 	}
 	else if menu[# section, i] = "PLAYER - "
 	{
-		draw_set_halign(fa_center)
-		draw_text(SCREENW/2,16,menu[# section, i]+string_upper(global.playerName));
-		draw_set_halign(fa_left)
+		var text = menu[# section, i]+string_upper(global.playerName)
+		//draw_text(SCREENW/2,16,menu[# section, i]+string_upper(global.playerName));
 		}
 	else if menu[# section, i] = "PALETTE - "
 	{
-		draw_set_halign(fa_center)
-		draw_text(SCREENW/2,32,menu[# section, i]+string_upper(global.paletteindex));
-		draw_set_halign(fa_left)
+		var text = menu[# section, i]+string_upper(global.paletteindex)
+		//draw_text(SCREENW/2,32,menu[# section, i]+string_upper(global.paletteindex));
 		}
 	else if menu[# section, i] = "MAX PLAYERS - "
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]+string_upper(global.maxplayers));}
+	{var text = menu[# section, i]+string_upper(global.maxplayers)}
+	else if menu[# section, i] = "RESOLUTION - "
+	{
+		var text = menu[# section, i]+string_upper(global.resolutionSetting)
+		//draw_text(xx,yy+(i*tsep),menu[# section, i]+string_upper(global.resolutionSetting));
+		}
+	else if menu[# section, i] = "LETTERBOX TYPE - " 
+		var text = menu[# section, i]+string_upper(global.letterboxes[global.letterboxSelected].name)
 	else if section = 8 && menu[# section, i] != "BACK"
 	{
+		var text = ""
 		var gobal  = global.keyu
 		
 		switch(menu[# section, i])
@@ -151,23 +169,25 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 			case "JUMP":    gobal=global.keyj		break;
 		}
 		
-		draw_text(xx,yy+(i*tsep),menu[# section, i]);
+		draw_text(xx - 50,yy+(i*tsep),menu[# section, i]);
 		draw_set_font(fntComic)
-		draw_text(xx+(8*11),yy+(i*tsep)-4,"( "+keycode_to_string(gobal,false)+" )")
+		draw_text(xx+ 50,yy+(i*tsep)-4,"( "+keycode_to_string(gobal,false)+" )")
 		draw_set_font(FNT)
 	
 	}
 	
 	else
-	{draw_text(xx,yy+(i*tsep),menu[# section, i]);}
+	{var text = menu[# section, i]}
+	draw_text(xx, yy+(i*tsep), text)
+	if i = sel	{draw_sprite(sMushsel,0,xx - (string_width(text) / 2) - 16,yy+(i*tsep));}
 	
-	
+	draw_set_halign(fa_left);
 	#endregion
 }
 
 
 
-bgm(-1,0)
+//bgm(-1,0)
 
 
 
@@ -374,18 +394,53 @@ if keyboard_check_pressed(global.keyj)
 			window_set_fullscreen(false)
 		
 			var scrsizemult = 3;
-			var displayw = display_get_width();
-			var displayh = display_get_height();
-			var xpos = (displayw / 2) - (SCREENW*scrsizemult)/2;
-			var ypos = (displayh / 2) - (SCREENH*scrsizemult)/2;
-			window_set_rectangle(xpos,ypos,SCREENW*scrsizemult,SCREENH*scrsizemult);
+			window_set_size(SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+			window_center()
 		break;
 		case "HIDE - SHOW DISCORD PFP":
 		
 			global.hidepfp = !global.hidepfp;
 			savesettings()
 		break;
-		
+		case "RESOLUTION - ": //this can be coded better but its almost 12 am and im a bit lazy. ill fix it up later -marioket
+			switch global.resolutionSetting {
+				case "STANDARD":
+					global.resolutionSetting = "WIDESCREEN"
+					SCREENW = SCREENW_WIDE
+					SCREENH = SCREENH_WIDE
+					camera_set_view_size(view_camera[0], SCREENW, SCREENH)
+					surface_resize(application_surface,SCREENW,SCREENH)
+					var scrsizemult = 3;
+					window_set_size(SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+					window_center()
+					
+				break;
+				case "WIDESCREEN":
+					global.resolutionSetting = "STANDARD"
+					SCREENW = SCREENW_BASE
+					SCREENH = SCREENH_BASE
+					camera_set_view_size(view_camera[0], SCREENW, SCREENH);
+					surface_resize(application_surface,SCREENW,SCREENH)
+					camera_set_view_pos(view_camera[0], 0, 0)
+					var scrsizemult = 3;
+					window_set_size(SCREENW_WIDE*scrsizemult,SCREENH_WIDE*scrsizemult);
+					window_center()
+				break;
+			}
+			savesettings()
+		break;
+		case "LETTERBOX TYPE - ":
+			global.letterboxSelected++
+			if global.letterboxSelected > array_length(global.letterboxes) - 1
+				global.letterboxSelected = 0
+			global.letterboxSprite = global.letterboxes[global.letterboxSelected].spr
+			savesettings()
+		break;
+		case "TOGGLE LETTERBOX DARKEN":
+			global.letterboxDark = !global.letterboxDark
+			show_debug_message(global.letterboxDark)
+			savesettings()
+		break;
 		case "CONTROLS":
 			section = 8;
 			sel = 0;

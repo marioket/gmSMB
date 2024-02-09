@@ -47,10 +47,12 @@ addmenu(6,2,"BGM")
 addmenu(6,3,"BACK")
 
 addmenu(7,0,"TOGGLE FULLSCREEN")
-//addmenu(7,1,"RESOLUTION - ")      still working on it - mcpig
-addmenu(7,1,"RESET WINDOW")
-addmenu(7,2,"HIDE - SHOW DISCORD PFP")
-addmenu(7,3,"BACK")
+addmenu(7,1,"RESOLUTION - ")
+addmenu(7,2,"LETTERBOX TYPE - ")
+addmenu(7,3,"TOGGLE LETTERBOX DARKEN")
+addmenu(7,4,"RESET WINDOW")
+addmenu(7,5,"HIDE - SHOW DISCORD PFP")
+addmenu(7,6,"BACK")
 
 addmenu(8,0,"UP")
 addmenu(8,1,"DOWN")
@@ -146,3 +148,4 @@ marioY = 206
 marioYAdd = 0
 marSpr = sMario_s_walk
 marSpr2 = sMario_b_walk
+marioSpawnTimer = 60
