@@ -4,7 +4,7 @@ if room = rmServer
 
 
 /// handle gui
-draw_set_font(FNT)
+draw_set_font(global.fnt)
 
 
 #region DEBUG gui
@@ -12,17 +12,17 @@ draw_set_font(FNT)
 var cx = 0; cy = 0;//camera_get_view_x(view_camera[0]); var cy = camera_get_view_y(view_camera[0]);
 var tile = 8
 
-draw_set_font(FNT);
+draw_set_font(global.fnt);
 
 if room != rmTitle && global.debug = true
 {
-	if keyboard_check(vk_escape) && global.chatfocus = false
+	/*if keyboard_check(vk_escape) && global.chatfocus = false
 	{resetcheck++}
 	else
 	{resetcheck = 0;}
 	
 	if resetcheck > room_speed*1
-	{room_goto(rmTitle);}
+	{room_goto(rmTitle);}*/
 	
 	
 	if !instance_exists(oClient)
@@ -58,7 +58,7 @@ if room != rmTitle && global.debug = true
 			draw_text((SCREENW-(256/2))+(tile*2)+cx,(tile*3)+tile*6+cy,"WARP"); boolbox(-1,5);
 			draw_text((SCREENW-(256/2))+(tile*2)+cx,(tile*3)+tile*7+cy,"PLAYER"); boolbox(-1,6);
 			
-			draw_set_font(FNT);
+			draw_set_font(global.fnt);
 			
 			if keyboard_check_pressed(vk_enter)
 			{
@@ -91,7 +91,7 @@ if room != rmTitle && global.debug = true
 	
 	draw_text(cx+(tile*3),cy+tile*2+tile,"FPS - "+string(fps));
 	
-	draw_text_color(cx+(tile*3),cy+tile*4+tile,"HOLD ESC RETURN TO TITLE",c_red,c_red,c_red,c_red,(resetcheck/100)+(0.5*sign(resetcheck)));
+	//draw_text_color(cx+(tile*3),cy+tile*4+tile,"HOLD ESC RETURN TO TITLE",c_red,c_red,c_red,c_red,(resetcheck/100)+(0.5*sign(resetcheck)));
 	
 	/*
 	draw_text(cx+(tile*2),cy+tile*3+tile*2,"SQ1 - "+string(audio_sound_get_gain(global.ch[0])));
@@ -119,7 +119,7 @@ if loadscreen > -1
 	
 	shader_set(shdColorswap);
 	apply_palette(sPalette_background,pal,image_alpha);
-		draw_sprite_stretched(sBG_0,0,0,0,SCREENW+1,SCREENH+1);
+		draw_sprite_stretched(sBG_0,0,0,0,SCREENW,SCREENH);
 	shader_reset();
 	
 	instance_deactivate_all(true)

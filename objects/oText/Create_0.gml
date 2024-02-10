@@ -1,5 +1,5 @@
 text = "TEXT"
-font = FNT
+font = global.fnt
 center = true
 
 

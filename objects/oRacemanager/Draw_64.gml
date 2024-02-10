@@ -17,7 +17,7 @@ if endcounter > 0
 if endcounter != -1
 {
 	draw_set_color(c_yellow)
-	draw_set_font(FNT);
+	draw_set_font(global.fnt);
 	draw_text(6,SCREENH-12,"FINISHING IN "+string(round(endcounter div 60))+"...");
 	draw_set_font(-1);
 	draw_set_color(-1);

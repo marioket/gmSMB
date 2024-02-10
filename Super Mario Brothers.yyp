@@ -505,6 +505,7 @@
     {"id":{"name":"oPipeexit","path":"objects/oPipeexit/oPipeexit.yy",},},
     {"id":{"name":"sGoober_b_fire","path":"sprites/sGoober_b_fire/sGoober_b_fire.yy",},},
     {"id":{"name":"sToad_s_walk","path":"sprites/sToad_s_walk/sToad_s_walk.yy",},},
+    {"id":{"name":"oPaused","path":"objects/oPaused/oPaused.yy",},},
     {"id":{"name":"sSeven_b_walk","path":"sprites/sSeven_b_walk/sSeven_b_walk.yy",},},
     {"id":{"name":"rm1_2_over","path":"rooms/rm1_2_over/rm1_2_over.yy",},},
     {"id":{"name":"sSucculentKicker_s_die","path":"sprites/sSucculentKicker_s_die/sSucculentKicker_s_die.yy",},},

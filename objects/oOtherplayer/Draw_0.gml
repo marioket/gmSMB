@@ -23,7 +23,7 @@ image_yscale = abs(image_xscale)
 if instance_exists(oIsArena)
 {
 	draw_set_color(c_orange);
-	draw_set_font(FNT)
+	draw_set_font(global.fnt)
 	draw_sprite_ext(sSuperstaricon,0,x-16,bbox_bottom,1,1,0,c_yellow,1);
 	draw_text(x+8,bbox_bottom+6,mystars);
 	draw_set_font(-1);

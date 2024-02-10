@@ -4,7 +4,7 @@ var cx = camera_get_view_x(view_camera[0]);
 var cy = camera_get_view_y(view_camera[0]);
 
 
-draw_set_font(FNT)
+draw_set_font(global.fnt)
 
 var p = sMario_s_idle
 if sprite_exists(ms("sMario_s_idle"))

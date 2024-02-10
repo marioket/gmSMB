@@ -15,7 +15,7 @@ if section = 0
 	shader_set(shdColorswap);
 	apply_palette(sPalette_tilebrown,global.environment,1);
 	draw_sprite(sTitle2,image_index,x,y-cy);
-	/*draw_set_font(FNT);
+	/*draw_set_font(global.fnt);
 	draw_set_color(#ffcec5);
 	draw_set_halign(fa_right);
 	draw_text(x + 98, y + 112, $"V{VERSION}");
@@ -92,7 +92,7 @@ marioxs = lerp(marioxs,0,.2);
 marioys = lerp(marioys,0,.2);
 
 
-draw_set_font(FNT);
+draw_set_font(global.fnt);
 
 for (var i = 0; i < optionsnum[section]; i ++;)
 {
@@ -111,7 +111,7 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.username}")
 		//draw_set_font(fntComic)
 		//draw_text(xx+(8*11),yy+(i*tsep)-4,global.username)
-		//draw_set_font(FNT)
+		//draw_set_font(global.fnt)
 	}
 	else if menu[# section, i] = "SET IP - "
 	{
@@ -119,7 +119,7 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.ip}")
 		//draw_set_font(fntComic)
 		//draw_text(xx+(8*10),yy+(i*tsep)-4,global.ip)
-		//draw_set_font(FNT)
+		//draw_set_font(global.fnt)
 	}
 	else if menu[# section, i] = "SET PORT - "
 	{
@@ -127,7 +127,7 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 		//draw_text(xx,yy+(i*tsep),$"{menu[# section, i]}{global.port}")
 		//draw_set_font(fntComic)
 		//draw_text(xx+(8*11),yy+(i*tsep)-4,global.port)
-		//draw_set_font(FNT)
+		//draw_set_font(global.fnt)
 	}
 	else if menu[# section, i] = "SOUND MODE - "
 	{
@@ -172,7 +172,7 @@ for (var i = 0; i < optionsnum[section]; i ++;)
 		draw_text(xx - 50,yy+(i*tsep),menu[# section, i]);
 		draw_set_font(fntComic)
 		draw_text(xx+ 50,yy+(i*tsep)-4,"( "+keycode_to_string(gobal,false)+" )")
-		draw_set_font(FNT)
+		draw_set_font(global.fnt)
 	
 	}
 	

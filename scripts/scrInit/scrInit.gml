@@ -11,7 +11,7 @@ function init()
 	#macro SCREENW_BASE 256
 	#macro SCREENH_BASE 240
 	#macro TIMESEC 0.4
-	#macro FNT font_add_sprite_ext(sFont,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-+*!.:©bredi",0,0)
+	global.fnt = font_add_sprite_ext(sFont,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-+*!.:©bredi",0,0)
 	#macro VERSION "2.1"
 	
 	global.score = 0;

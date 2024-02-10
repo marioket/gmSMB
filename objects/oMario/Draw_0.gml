@@ -91,7 +91,7 @@ if instance_exists(oClient)
 if instance_exists(oIsArena)
 {
 	draw_set_color(c_yellow);
-	draw_set_font(FNT)
+	draw_set_font(global.fnt)
 	draw_sprite_ext(sSuperstaricon,0,x-16,bbox_bottom,1,1,0,c_yellow,1);
 	draw_text(x+8,bbox_bottom+6,global.stars);
 	draw_set_font(-1);

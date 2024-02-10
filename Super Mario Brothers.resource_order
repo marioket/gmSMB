@@ -354,6 +354,7 @@
     {"name":"oPipeexit","order":7,"path":"objects/oPipeexit/oPipeexit.yy",},
     {"name":"sGoober_b_fire","order":12,"path":"sprites/sGoober_b_fire/sGoober_b_fire.yy",},
     {"name":"sToad_s_walk","order":10,"path":"sprites/sToad_s_walk/sToad_s_walk.yy",},
+    {"name":"oPaused","order":12,"path":"objects/oPaused/oPaused.yy",},
     {"name":"sSeven_b_walk","order":4,"path":"sprites/sSeven_b_walk/sSeven_b_walk.yy",},
     {"name":"rm1_2_over","order":3,"path":"rooms/rm1_2_over/rm1_2_over.yy",},
     {"name":"sSucculentKicker_s_die","order":8,"path":"sprites/sSucculentKicker_s_die/sSucculentKicker_s_die.yy",},

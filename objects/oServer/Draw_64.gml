@@ -2,7 +2,7 @@
 
 var all_players = ds_list_size(total_players);
 
-draw_set_font(FNT);
+draw_set_font(global.fnt);
 
 draw_text(16, 10, " - HOSTING!");
 
