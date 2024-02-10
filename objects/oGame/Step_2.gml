@@ -121,12 +121,12 @@ if room != rmTitle && room != rmServer && !instance_exists(oPaused) {
 		instance_deactivate_all(false)
 		instance_activate_object(oLetterbox)
 		instance_create_depth(0, 0, -999, oPaused)
-		audio_stop_all()
+		//audio_stop_all()
 		sfx(sndCoin, 0)
 	}
 }
 
-if !global.musicchannels && !audio_is_playing(global.ch[4]) && !instance_exists(oPaused) {
+/*if !global.musicchannels && !audio_is_playing(global.ch[4]) && !instance_exists(oPaused) {
 	bgm(global.curbgm,1)
 } else if global.musicchannels && !instance_exists(oPaused) {
 	if !audio_is_playing(global.ch[0]) && !audio_is_playing(global.ch[1]) && !audio_is_playing(global.ch[2]) && !audio_is_playing(global.ch[3]) && !audio_is_playing(global.ch[4])
